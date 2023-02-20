@@ -1,6 +1,6 @@
 //ПОКА ВСЕ ПОНЯЛ ПУБЛИЧНЫЕ, НО  МОЖНО ПРОСТАВИТЬ МОДИФИКАТОРЫ ДОСТУПА, И ВЫДЕЛИТЬ МЕТОДЫ ИМЕННО ДЛЯ ИНТЕРФЕЙСА
 
-interface SelectorInterface{
+interface selectorInterface{
     display: HTMLInputElement|null;
     keys: HTMLInputElement|null;
     range: HTMLInputElement|null;
@@ -19,8 +19,8 @@ interface calculatorAdderInterface{
     //Кол-во доп пакетов
     ArrayOfRangeNum: Array<string>;
 
-    Selector (): SelectorInterface;
-    ListeningEventsOnClick<T extends SelectorInterface>(ObjectWithSelectors: T | any ): void;
+    Selector (): selectorInterface;
+    ListeningEventsOnClick<T extends selectorInterface>(ObjectWithSelectors: T | any ): void;
     definePrice (type:string): Array<string>;
     displayClear(): void;
     displayValues(): void;
@@ -32,7 +32,7 @@ interface calculatorAdderInterface{
 
 }
 
-class calculatorAdderClass implements calculatorAdderInterface {
+class CalculatorAdderClass implements calculatorAdderInterface {
 
 
     public DISPLAY_ELEMENT;
@@ -57,7 +57,7 @@ class calculatorAdderClass implements calculatorAdderInterface {
     }
 
     //Тут вы вытягиваем все данные из дом элементов 
-    public  Selector ():  SelectorInterface  {
+    public  Selector ():  selectorInterface  {
         //Берем данные из полей по клику
         const display = document.querySelector<HTMLInputElement>('.calculator-screen');
         const keys =  document.querySelector<HTMLInputElement>('.calculator-keys');
@@ -73,7 +73,7 @@ class calculatorAdderClass implements calculatorAdderInterface {
     }
 
     //тут мы слушаем события на наших селектарах
-    public  ListeningEventsOnClick<T extends SelectorInterface>(ObjectWithSelectors: T | any ): void{
+    public  ListeningEventsOnClick<T extends selectorInterface>(ObjectWithSelectors: T | any ): void{
         // Записываем дисплейв свойства
         this.DISPLAY_ELEMENT =  ObjectWithSelectors.display;
 
@@ -223,4 +223,4 @@ class calculatorAdderClass implements calculatorAdderInterface {
   
 }
 
-new calculatorAdderClass();
+new CalculatorAdderClass();
